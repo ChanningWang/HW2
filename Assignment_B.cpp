@@ -7,9 +7,22 @@
 //============================================================================
 
 #include <iostream>
+#include "Bank.cpp"
+
+
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+
+Bank citi;
+citi.createCounterParties("CounterParty.txt");
+citi.createFX("FX.txt");
+citi.createSwap("Swap.txt");
+citi.createMapping("DealMap.txt");
+
+
+
+
+
 	return 0;
 }
