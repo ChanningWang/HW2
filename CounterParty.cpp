@@ -10,7 +10,6 @@
 #include <string.h>
 
 
-
 using namespace std;
 
 
@@ -21,10 +20,10 @@ public:
 	string id;
 	string rating;
 	float hazard_rate;
-	int position; //1 represents long, -1 represents short to the counterparty
+	//int position; //1 represents long, -1 represents short to the counterparty
 
 
-	CounterParty(string id,string rating,string position){
+	CounterParty(string id,string rating){
        this->id=id;
        if(boost::iequals("A",rating)){
           hazard_rate=0.02;
@@ -38,7 +37,7 @@ public:
     	   hazard_rate=0.1;
        }
 
-       this->position=atoi(position.c_str());
+       //this->position=atoi(position.c_str());
 	}
 
 
@@ -46,4 +45,9 @@ public:
 
 
 
-}
+
+
+
+
+
+};
