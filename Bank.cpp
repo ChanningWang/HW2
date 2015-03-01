@@ -1,4 +1,4 @@
-#include "Utils.cpp"
+#include "Curve.cpp"
 using namespace std;
 
 class Bank {
@@ -160,14 +160,24 @@ public:
 		Generator tenorGenerator(generator_tenor, distribution_tenor);
 		generator_tenor.seed(std::time(0)); // seed with the current time
 
+		int position=0;
+		char currency='U';
+
 		for (int i = 1; i <= swap_number; i++) {
 			if (i >= 1 && i <= swap_number * 11 / 20) {
-				line = stringSwap(i, notionalGenerator(),
-						fLegGenerator() / 100.0, tenorGenerator(), 1);
+				position=1;
 			} else {
-				line = stringSwap(i, notionalGenerator(),
-						fLegGenerator() / 100.0, tenorGenerator(), -1);
+				position=-1;
 			}
+			if(i%2==0){
+				currency='U';
+			}else{
+				currency='E';
+			}
+
+			line = stringSwap(i, currency, notionalGenerator(),
+									fLegGenerator() / 100.0, tenorGenerator(), position);
+
 
 			fs << line;
 		}
@@ -199,10 +209,10 @@ public:
 		return os.str();
 	}
 
-	string stringSwap(int ID, int notional, float fixed_leg, int tenor,
+	string stringSwap(int ID, char currency, int notional, float fixed_leg, int tenor,
 			int position) {
 		std::ostringstream os;
-		os << ID << "," << notional << "," << fixed_leg << "," << tenor << ","
+		os << ID << "," << currency<<","<<notional << "," << fixed_leg << "," << tenor << ","
 				<< position << endl;
 		return os.str();
 	}
