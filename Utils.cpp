@@ -16,6 +16,7 @@
 #include <boost/algorithm/string.hpp>
 #include "boost/random.hpp"
 #include "boost/generator_iterator.hpp"
+#include "Logging.cpp"
 
 
 using namespace std;
@@ -28,6 +29,9 @@ typedef boost::variate_generator<RandomNumberGenerator&, NumberDistribution> Gen
 class Utils{
 
 public:
+
+
+
 	static string getParam(string file, string key) {
 		std::ifstream fileStream(file);
 		string line;
@@ -39,7 +43,6 @@ public:
 				return strs[1];
 
 			}
-
 		}
 		return "";
 	}
@@ -51,6 +54,15 @@ public:
 //				Generator numberGenerator(generator, distribution);
 //				generator.seed(std::time(0)); // seed with the current time
 //	}
+
+
+//	Bank citi;
+//	citi.createCounterParties("CounterParty.txt");
+//	citi.createFX("FX.txt");
+//	citi.createSwap("Swap.txt");
+//	citi.createMapping("DealMap.txt");
+
+
 
 
 
