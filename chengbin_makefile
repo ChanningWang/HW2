@@ -33,7 +33,7 @@ Utils.o: Utils.cpp
 Logging.o: Logging.cpp
 	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oLogging.o Logging.cpp
 Simulate.o: Simulate.cu
-	$(NVCC)  -c Simulate.cu
+	$(NVCC) $(CFLAGS2)  -c Simulate.cu
 
 .PHONY: clean cleanest
 
