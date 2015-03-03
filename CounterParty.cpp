@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <thrust/device_vector.h>
-#include "Bank.cpp"
 #include "Swap.cpp"
 
 
