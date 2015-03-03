@@ -1,4 +1,4 @@
-#include "Deal.cpp"
+#include "Forex.cpp"
 
 
 
