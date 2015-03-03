@@ -1,0 +1,5 @@
+#! /bin/sh
+
+sort -n -k1,1 -t ',' DealMap.txt >DealMap1.txt
+rm DealMap.txt
+mv DealMap1.txt DealMap.txt
