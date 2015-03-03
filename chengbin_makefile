@@ -7,6 +7,7 @@ LDFLAGS = -llog4cpp -lmpi -lmpi_cxx -lcudart
 LPFLAGS = -L/share/apps/openmpi-intel/1.6.4_hcoll/lib -L/scratch/chengbin.wang/install/log4cpp/lib -L/scratch/chengbin.wang/install/boost/lib -L/share/apps/cuda/6.5.14/lib64
 
 NVCC =nvcc
+NVCCFLAG-std=c++11
  
 
 all: main clean
@@ -33,7 +34,7 @@ Utils.o: Utils.cpp
 Logging.o: Logging.cpp
 	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oLogging.o Logging.cpp
 Simulate.o: Simulate.cu
-	$(NVCC) $(CFLAGS1) $(CFLAGS2)  -c Simulate.cu
+	$(NVCC) $(NVCCFLAG) $(CFLAGS2)  -c Simulate.cu
 
 .PHONY: clean cleanest
 
