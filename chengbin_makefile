@@ -1,0 +1,44 @@
+#define macro
+
+CC      = icpc
+CFLAGS1  = -std=c++0x 
+CFLAGS2  = -I/share/apps/openmpi-intel/1.6.4_hcoll/include -I/scratch/chengbin.wang/install/log4cpp/include -I/scratch/chengbin.wang/install/boost/include
+LDFLAGS = -llog4cpp -lmpi -lmpi_cxx -lcudart
+LPFLAGS = -L/share/apps/openmpi-intel/1.6.4_hcoll/lib -L/scratch/chengbin.wang/install/log4cpp/lib -L/scratch/chengbin.wang/install/boost/lib -L/share/apps/cuda/6.5.14/lib64
+
+NVCC =nvcc
+ 
+
+all: main clean
+
+main: HW2.o Bank.o Curve.o Swap.o Forex.o Deal.o CounterParty.o Simulate.o Utils.o Logging.o
+	$(CC) $(CFLAGS1) $(LPFLAGS) $(LDFLAGS) -o main HW2.o Bank.o Curve.o Swap.o Forex.o Deal.o CounterParty.o Simulate.o Utils.o Logging.o 
+
+HW2.o: HW2.cpp 
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oHW2.o HW2.cpp
+Curve.o: Curve.cpp 
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oCurve.o Curve.cpp
+Bank.o: Bank.cpp
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oBank.o Bank.cpp
+Deal.o: Deal.cpp 
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oDeal.o Deal.cpp
+Forex.o: Forex.cpp 
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oForex.o Forex.cpp
+Swap.o: Swap.cpp 
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oSwap.o Swap.cpp
+CounterParty.o: CounterParty.cpp 
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oCounterParty.o CounterParty.cpp
+Utils.o: Utils.cpp 
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oUtils.o Utils.cpp
+Logging.o: Logging.cpp
+	$(CC) $(CFLAGS1) $(CFLAGS2) -c -oLogging.o Logging.cpp
+Simulate.o: Simulate.cu
+	$(NVCC)  -c -oSimulate.o Simulate.cpp
+
+.PHONY: clean cleanest
+
+clean:
+	rm *.o
+
+cleanest: clean
+	rm main
