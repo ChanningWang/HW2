@@ -2,7 +2,7 @@
 
 CC      = icpc
 CFLAGS1  = -std=c++0x 
-CFLAGS2  = -I/share/apps/openmpi-intel/1.6.4_hcoll/include -I/scratch/chengbin.wang/install/log4cpp/include -I/scratch/chengbin.wang/install/boost/include
+CFLAGS2  = -I/scratch/chengbin.wang/install/thrust_1.8 -I/share/apps/openmpi-intel/1.6.4_hcoll/include -I/scratch/chengbin.wang/install/log4cpp/include -I/scratch/chengbin.wang/install/boost/include
 LDFLAGS = -llog4cpp -lmpi -lmpi_cxx -lcudart
 LPFLAGS = -L/share/apps/openmpi-intel/1.6.4_hcoll/lib -L/scratch/chengbin.wang/install/log4cpp/lib -L/scratch/chengbin.wang/install/boost/lib -L/share/apps/cuda/6.5.14/lib64
 
