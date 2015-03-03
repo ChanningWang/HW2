@@ -1,4 +1,4 @@
-#include "CounterParty.cpp";
+#include "CounterParty.cpp"
 #include <thrust/device_vector.h>
 
 class Simulate{
