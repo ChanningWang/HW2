@@ -1,5 +1,5 @@
 #include <iostream>
-#include "CounterParty.cpp";
+#include "CounterParty.cpp"
 using namespace std;
 
 int main() {
